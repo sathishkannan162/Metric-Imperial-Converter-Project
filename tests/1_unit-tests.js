@@ -7,16 +7,23 @@ let convertHandler = new ConvertHandler();
 suite('Unit Tests', function(){
     suite('ConverHandler Functions', function(){
         test('Read whole number',function(){
-            assert.equal(convertHandler.getNum('2mi'),2,'Whole number not read');
+            assert.strictEqual(convertHandler.getNum('2mi'),2,'Whole number not read');
         });
         test('Read decimal', function(){
-            assert.equal(convertHandler.getNum('1.5gaL'),1.5,'Decimal Number not read');
+            assert.strictEqual(convertHandler.getNum('1.5gaL'),1.5,'Decimal Number not read');
         });
         test('Read fraction', function(){
-            assert.equal(convertHandler.getNum('1/2L'),0.5,'Fractional Number not read');
+            assert.strictEqual(convertHandler.getNum('1/2L'),0.5,'Fractional Number not read');
         });
         test('Read decimal with fraction',function(){
-            assert.equal(convertHandler.getNum('3.2/2km'),1.6,'Fractional Number with decimal not read');
+            assert.strictEqual(convertHandler.getNum('3.2/2km'),1.6,'Fractional Number with decimal not read');
+        });
+        test('Empty number gives default 1',function(){
+            assert.strictEqual(convertHandler.getNum('L'),1,'Default value is 1');
+            assert.strictEqual(convertHandler.getNum('mi'),1,'Default value is 1');
+            assert.strictEqual(convertHandler.getNum('gaL'),1,'Default value is 1');
+            assert.strictEqual(convertHandler.getNum('km'),1,'Default value is 1');
+
         });
         test('Throw error for double fractions',function(){
             assert.Throw(()=>{convertHandler.getNum('3/1/2')},'invalid number','Error not thrown for whole number double fractions');
