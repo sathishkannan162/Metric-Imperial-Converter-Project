@@ -36,14 +36,16 @@ function ConvertHandler() {
   
   this.getReturnUnit = function(initUnit) {
     let result;
-   let inputUnit = ["L",    "gal",    "km",    "mi",    "lbs",    "kg"];
-   let returnUnit = ["gal",   "L",   "mi",   "km",   "kg",   "lbs"];
-   result=returnUnit[inputUnit.indexOf(initUnit)];
+    let inputUnit = ["L",    "gal",    "km",    "mi",    "lbs",    "kg"];
+    let returnUnit = ["gal",   "L",   "mi",   "km",   "kg",   "lbs"];
+    result=returnUnit[inputUnit.indexOf(initUnit)];
     return result;
   };
 
   this.spellOutUnit = function(unit) {
-    let result;
+    let inputUnit = ["L",    "gal",    "km",    "mi",    "lbs",    "kg"];
+    let unitspelled = ["litres","gallons","kilometers","miles","pounds","kilograms"];
+    let result = unitspelled[inputUnit.indexOf(unit)];
     
     return result;
   };
