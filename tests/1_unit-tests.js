@@ -72,7 +72,7 @@ suite('Unit Tests', function(){
     });
     suite("Return spelled unit",function(){
         test("Spell the unit",function(){
-            assert.equal(convertHandler.spellOutUnit("L"),"litres");
+            assert.equal(convertHandler.spellOutUnit("L"),"liters");
             assert.equal(convertHandler.spellOutUnit("gal"),"gallons");
             assert.equal(convertHandler.spellOutUnit("km"),"kilometers");
             assert.equal(convertHandler.spellOutUnit("mi"),"miles");
@@ -81,9 +81,6 @@ suite('Unit Tests', function(){
         });
     });
     suite("Convert Number in return units",function(){
-        const galToL = 3.78541;
-        const lbsToKg = 0.453592;
-        const miToKm = 1.60934;
         test("Convert units",function(){
             // The convert function results are compared with values from freecodecamp website: https://metric-imperial-converter.freecodecamp.rocks/.
             assert.equal(convertHandler.convert(3.1,'gal'),11.73477);
@@ -92,6 +89,16 @@ suite('Unit Tests', function(){
             assert.equal(convertHandler.convert(6,'kg'),13.22775);
             assert.equal(convertHandler.convert(4,'mi'),6.43736);
             assert.equal(convertHandler.convert(1.5,'km'),0.93206);
+        });
+    });
+    suite("Spell Strings",function(){
+        test('#Spell out strings',function(){
+            assert.equal(convertHandler.getString(3.1,'gal',convertHandler.convert(3.1,'gal'),convertHandler.getReturnUnit('gal')),"3.1 gallons converts to 11.73477 liters");
+            assert.equal(convertHandler.getString(6,'L',convertHandler.convert(6,'L'),convertHandler.getReturnUnit('L')),"6 liters converts to 1.58503 gallons");
+            assert.equal(convertHandler.getString(7.2,"lbs",convertHandler.convert(7.2,"lbs"),convertHandler.getReturnUnit('lbs')),"7.2 pounds converts to 3.26586 kilograms");
+            assert.equal(convertHandler.getString(3.6,'kg',convertHandler.convert(3.6,'kg'),convertHandler.getReturnUnit('kg')),"3.6 kilograms converts to 7.93665 pounds");
+            assert.equal(convertHandler.getString(4,'mi',convertHandler.convert(4,'mi'),convertHandler.getReturnUnit('mi')),"4 miles converts to 6.43736 kilometers");
+            assert.equal(convertHandler.getString(10,'km',convertHandler.convert(10,'km'),convertHandler.getReturnUnit('km')),"10 kilometers converts to 6.21373 miles");
         });
     });
 });
