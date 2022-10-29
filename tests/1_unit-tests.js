@@ -36,6 +36,10 @@ suite('Unit Tests', function(){
             assert.throw(()=>{convertHandler.getNum('3.1.1Lbs')},'invalid number','Error not thrown for double decimals');
             assert.throw(()=>{convertHandler.getNum('5.7.7/2gal')},'invalid number','Error not thrown for double decimals with fraction');
         });
+        test('Throw error for numbers with space',function(){
+            assert.Throw(()=>{convertHandler.getNum('3.2 gal')},'invalid number','Error not thrown for double decimal double fractions');
+            assert.Throw(()=>{convertHandler.getNum(' gal')},'invalid number','Error not thrown for double decimal double fractions');
+        });
     });
     suite("Get unit From String",function(){
         const unitRegex = /gal|L|km|mi|lbs|kg/;
