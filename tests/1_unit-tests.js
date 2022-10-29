@@ -70,6 +70,14 @@ suite('Unit Tests', function(){
             assert.equal(convertHandler.getReturnUnit("kg"),"lbs");
         });
     });
+    suite("Return spelled unit",function(){
+            assert.equal(convertHandler.spellOutUnit("L"),"litres");
+            assert.equal(convertHandler.spellOutUnit("gal"),"gallons");
+            assert.equal(convertHandler.spellOutUnit("km"),"kilometers");
+            assert.equal(convertHandler.spellOutUnit("mi"),"miles");
+            assert.equal(convertHandler.spellOutUnit("lbs"),"pounds");
+            assert.equal(convertHandler.spellOutUnit("kg"),"kilograms");
+    });
 
 
 });
