@@ -5,7 +5,7 @@ const ConvertHandler = require('../controllers/convertHandler.js');
 let convertHandler = new ConvertHandler();
 
 suite('Unit Tests', function(){
-    suite('ConverHandler Functions', function(){
+    suite('Get Number from String', function(){
         test('Read whole number',function(){
             assert.strictEqual(convertHandler.getNum('2mi'),2,'Whole number not read');
         });
@@ -35,8 +35,26 @@ suite('Unit Tests', function(){
         test('Throw error for double decimals',function(){
             assert.throw(()=>{convertHandler.getNum('3.1.1Lbs')},'invalid number','Error not thrown for double decimals');
             assert.throw(()=>{convertHandler.getNum('5.7.7/2gal')},'invalid number','Error not thrown for double decimals with fraction');
-        })
-
+        });
+    });
+    suite("Get unit From String",function(){
+        const unitRegex = /gal|L|km|mi|lbs|kg/;
+        test("Get valid unit from each unit", function(){
+            assert.match(convertHandler.getUnit('2mi'),unitRegex);
+            assert.match(convertHandler.getUnit('3.2gaL'),unitRegex);
+            assert.match(convertHandler.getUnit('3/2LBS'),unitRegex);
+            assert.match(convertHandler.getUnit('3.1.1Km'),unitRegex);
+            assert.match(convertHandler.getUnit('5/2/2l'),unitRegex);
+            assert.match(convertHandler.getUnit('5.2.2KG'),unitRegex);
+        });
+        test("Throw Invalid unit",function(){
+            assert.throw(()=>{convertHandler.getUnit("3.2a")},"invalid unit","Error invalid unit should be thrown for invalid units");
+            assert.throw(()=>{convertHandler.getUnit("3.2 lbs")},"invalid unit","Error invalid unit should be thrown for invalid units");
+            assert.throw(()=>{convertHandler.getUnit("3.2 *lkd")},"invalid unit","Error invalid unit should be thrown for invalid units");
+            assert.throw(()=>{convertHandler.getUnit("3.2 123")},"invalid unit","Error invalid unit should be thrown for invalid units");
+            assert.throw(()=>{convertHandler.getUnit("3.2 3/2")},"invalid unit","Error invalid unit should be thrown for invalid units");
+        });
     })
+
 
 });
