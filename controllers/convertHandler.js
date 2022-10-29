@@ -36,7 +36,9 @@ function ConvertHandler() {
   
   this.getReturnUnit = function(initUnit) {
     let result;
-    
+   let inputUnit = ["L",    "gal",    "km",    "mi",    "lbs",    "kg"];
+   let returnUnit = ["gal",   "L",   "mi",   "km",   "kg",   "lbs"];
+   result=returnUnit[inputUnit.indexOf(initUnit)];
     return result;
   };
 
