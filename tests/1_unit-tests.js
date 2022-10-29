@@ -161,7 +161,6 @@ suite("Unit Tests", function () {
   test("convertHandler should correctly convert mi to km.", function () {
     assert.equal(convertHandler.convert(4, "mi"), 6.43736);
   });
-  assert.equal(convertHandler.convert(1.5, "km"), 0.93206);
   test("convertHandler should correctly convert km to mi.", function () {
     assert.equal(convertHandler.convert(1.5, "km"), 0.93206);
   });
