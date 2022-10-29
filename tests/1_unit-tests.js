@@ -53,10 +53,12 @@ suite('Unit Tests', function(){
         });
         test("Throw Invalid unit",function(){
             assert.throw(()=>{convertHandler.getUnit("3.2a")},"invalid unit","Error invalid unit should be thrown for invalid units");
-            assert.throw(()=>{convertHandler.getUnit("3.2 lbs")},"invalid unit","Error invalid unit should be thrown for invalid units");
-            assert.throw(()=>{convertHandler.getUnit("3.2 *lkd")},"invalid unit","Error invalid unit should be thrown for invalid units");
+            assert.throw(()=>{convertHandler.getUnit("3.2")},"invalid unit","Error invalid unit should be thrown for invalid units");
+            assert.throw(()=>{convertHandler.getUnit("3.2 ")},"invalid unit","Error invalid unit should be thrown for invalid units");
+            assert.throw(()=>{convertHandler.getUnit("3.2 lkd")},"invalid unit","Error invalid unit should be thrown for invalid units");
             assert.throw(()=>{convertHandler.getUnit("3.2 123")},"invalid unit","Error invalid unit should be thrown for invalid units");
             assert.throw(()=>{convertHandler.getUnit("3.2 3/2")},"invalid unit","Error invalid unit should be thrown for invalid units");
+
         });
     })
 
