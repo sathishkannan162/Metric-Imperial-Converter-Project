@@ -22,24 +22,16 @@ function ConvertHandler() {
     if (result==null){
       throw "invalid unit";
     }
+   
     // the result will be an array after match
     result = result[0].toLowerCase();
-    switch(result) {
-      case 'l':
-        return 'L';
-      case 'gal':
-        return 'gal';
-      case 'km':
-        return 'km';
-      case "mi":
-        return "mi";
-      case "lbs":
-        return "lbs";
-      case "kg":
-        return "kg";
-      default:
-        throw "invalid unit";
+    if (result=='l') {
+      return 'L'
     }
+    if (['gal','km','lbs','mi','kg'].includes(result)){
+      return result;
+    }
+    throw "invalid unit";
   };
   
   this.getReturnUnit = function(initUnit) {
