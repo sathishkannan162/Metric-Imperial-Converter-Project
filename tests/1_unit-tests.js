@@ -58,8 +58,15 @@ suite('Unit Tests', function(){
             assert.throw(()=>{convertHandler.getUnit("3.2 lkd")},"invalid unit","Error invalid unit should be thrown for invalid units");
             assert.throw(()=>{convertHandler.getUnit("3.2 123")},"invalid unit","Error invalid unit should be thrown for invalid units");
             assert.throw(()=>{convertHandler.getUnit("3.2 3/2")},"invalid unit","Error invalid unit should be thrown for invalid units");
-
         });
+    });
+    suite("Return the correct unit for given unit",function(){
+        assert.equal("L","gal");
+        assert.equal("gal","L");
+        assert.equal("km","mi");
+        assert.equal("mi","km");
+        assert.equal("lbs","kg");
+        assert.equal("kg","lbs");
     })
 
 
