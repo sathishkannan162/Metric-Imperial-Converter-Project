@@ -61,13 +61,15 @@ suite('Unit Tests', function(){
         });
     });
     suite("Return the correct unit for given unit",function(){
-        assert.equal("L","gal");
-        assert.equal("gal","L");
-        assert.equal("km","mi");
-        assert.equal("mi","km");
-        assert.equal("lbs","kg");
-        assert.equal("kg","lbs");
-    })
+        test("Get correct return unit",function(){
+            assert.equal(convertHandler.getReturnUnit("L"),"gal");
+            assert.equal(convertHandler.getReturnUnit("gal"),"L");
+            assert.equal(convertHandler.getReturnUnit("km"),"mi");
+            assert.equal(convertHandler.getReturnUnit("mi"),"km");
+            assert.equal(convertHandler.getReturnUnit("lbs"),"kg");
+            assert.equal(convertHandler.getReturnUnit("kg"),"lbs");
+        });
+    });
 
 
 });
