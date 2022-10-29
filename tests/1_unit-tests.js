@@ -71,13 +71,26 @@ suite('Unit Tests', function(){
         });
     });
     suite("Return spelled unit",function(){
+        test("Spell the unit",function(){
             assert.equal(convertHandler.spellOutUnit("L"),"litres");
             assert.equal(convertHandler.spellOutUnit("gal"),"gallons");
             assert.equal(convertHandler.spellOutUnit("km"),"kilometers");
             assert.equal(convertHandler.spellOutUnit("mi"),"miles");
             assert.equal(convertHandler.spellOutUnit("lbs"),"pounds");
             assert.equal(convertHandler.spellOutUnit("kg"),"kilograms");
+        });
     });
-
-
+    suite("Convert Number in return units",function(){
+        const galToL = 3.78541;
+        const lbsToKg = 0.453592;
+        const miToKm = 1.60934;
+        test("Convert units",function(){
+            assert.equal(convertHandler.convert(3.1,'gal'),(3.1*galToL).toFixed(5));
+            assert.equal(convertHandler.convert(5.2,'L'),(5.2/galToL).toFixed(5));
+            assert.equal(convertHandler.convert(8,'lbs'),(8*lbsToKg).toFixed(5));
+            assert.equal(convertHandler.convert(6,'kg'),(6/lbsToKg).toFixed(5));
+            assert.equal(convertHandler.convert(4,'mi'),(4*miToKm).toFixed(5));
+            assert.equal(convertHandler.convert(1.5,'km'),(1.5/miToKm).toFixed(5));
+        });
+    });
 });
