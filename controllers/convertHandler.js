@@ -2,7 +2,6 @@ function ConvertHandler() {
   
   this.getNum = function(input) {
     let unitRegex = /[a-zA-Z]+$/;
-    // let result = input.match(/[\d\./]+/);
     let result = input.replace(unitRegex,'');
     if (result =='') {
       return 1;
@@ -54,9 +53,21 @@ function ConvertHandler() {
     const galToL = 3.78541;
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
-    let result;
-    
-    return result;
+
+    switch(initUnit) {
+      case "L":
+        return (initNum/galToL).toFixed(5);
+      case "gal":
+        return (initNum*galToL).toFixed(5);
+      case "km":
+        return (initNum/miToKm).toFixed(5);
+      case "mi":
+        return (initNum*miToKm).toFixed(5);
+      case "kg":
+        return (initNum/lbsToKg).toFixed(5);
+      case "lbs":
+        return (initNum*lbsToKg).toFixed(5);
+    }
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
