@@ -43,7 +43,7 @@ function ConvertHandler() {
 
   this.spellOutUnit = function(unit) {
     let inputUnit = ["L",    "gal",    "km",    "mi",    "lbs",    "kg"];
-    let unitspelled = ["litres","gallons","kilometers","miles","pounds","kilograms"];
+    let unitspelled = ["liters","gallons","kilometers","miles","pounds","kilograms"];
     let result = unitspelled[inputUnit.indexOf(unit)];
     
     return result;
@@ -71,8 +71,7 @@ function ConvertHandler() {
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
-    let result;
-    
+    let result = `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`
     return result;
   };
   
