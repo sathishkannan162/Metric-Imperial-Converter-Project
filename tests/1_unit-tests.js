@@ -85,12 +85,13 @@ suite('Unit Tests', function(){
         const lbsToKg = 0.453592;
         const miToKm = 1.60934;
         test("Convert units",function(){
-            assert.equal(convertHandler.convert(3.1,'gal'),(3.1*galToL).toFixed(5));
-            assert.equal(convertHandler.convert(5.2,'L'),(5.2/galToL).toFixed(5));
-            assert.equal(convertHandler.convert(8,'lbs'),(8*lbsToKg).toFixed(5));
-            assert.equal(convertHandler.convert(6,'kg'),(6/lbsToKg).toFixed(5));
-            assert.equal(convertHandler.convert(4,'mi'),(4*miToKm).toFixed(5));
-            assert.equal(convertHandler.convert(1.5,'km'),(1.5/miToKm).toFixed(5));
+            // The convert function results are compared with values from freecodecamp website: https://metric-imperial-converter.freecodecamp.rocks/.
+            assert.equal(convertHandler.convert(3.1,'gal'),11.73477);
+            assert.equal(convertHandler.convert(5.2,'L'),1.37370);
+            assert.equal(convertHandler.convert(8,'lbs'),3.62874 );
+            assert.equal(convertHandler.convert(6,'kg'),13.22775);
+            assert.equal(convertHandler.convert(4,'mi'),6.43736);
+            assert.equal(convertHandler.convert(1.5,'km'),0.93206);
         });
     });
 });
